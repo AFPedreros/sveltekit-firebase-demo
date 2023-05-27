@@ -6,6 +6,11 @@
 	let error = false;
 	let register = false;
 
+	let classes =
+		'absolute rounded px-2 text-[0.75rem] z-10 translate-y-[-75%] bg-surface-50 dark:bg-surface-900';
+	let center = `${classes} top-[50%] opacity-0`;
+	let above = `${classes} top-0 left-4 border border-black dark:border-white`;
+
 	function handleAuthenticate() {
 		if (!email || !password || (register && !confirmPassword)) {
 			error = true;
@@ -20,21 +25,21 @@
 
 <div class="flex h-full w-full flex-col items-center justify-center px-8">
 	<form action="" class="flex w-[350px] flex-col gap-6">
-		<h1 class="h1 text-center font-bold">{register ? 'Register' : 'Login'}</h1>
+		<h1 class="top h1 text-center font-bold">{register ? 'Register' : 'Login'}</h1>
 		{#if error}
 			<p class="text-error-600">The information you entered is not correct</p>
 		{/if}
 		<label class="relative">
-			<p class={email ? 'above' : 'center'}>Email</p>
+			<p class={email ? above : center}>Email</p>
 			<input bind:value={email} class="input" type="email" placeholder="Email" />
 		</label>
 		<label class="relative">
-			<p class={password ? 'above' : 'center'}>Password</p>
+			<p class={password ? above : center}>Password</p>
 			<input bind:value={password} class="input" type="password" placeholder="Password" />
 		</label>
 		{#if register}
 			<label class="relative">
-				<p class={confirmPassword ? 'above' : 'center'}>Confirm Password</p>
+				<p class={confirmPassword ? above : center}>Confirm Password</p>
 				<input
 					bind:value={confirmPassword}
 					class="input"
@@ -67,7 +72,7 @@
 	</div>
 </div>
 
-<style>
+<!-- <style>
 	.above,
 	.center {
 		position: absolute;
@@ -94,4 +99,4 @@
 		border: 1px solid transparent;
 		opacity: 0;
 	}
-</style>
+</style> -->
